@@ -23,5 +23,9 @@
         <action name="historyTransaction" class="baby.shop.ui.model.HistoryTransaction"> 
             <result name="success">historyTransaction.jsp</result>
         </action>
+        <action name="removeProductCart" class="baby.shop.ui.model.removeProductCart"> 
+            <result name="success" type="redirect">viewCart</result>
+        </action>
+        
     </package>
 </struts>

@@ -8,6 +8,8 @@ package baby.shop.ui.model;
 import baby.shop.biz.Cart;
 import baby.shop.da.ProductManager;
 import baby.shop.entity.Product;
+import static com.opensymphony.xwork2.Action.ERROR;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -15,35 +17,30 @@ import com.opensymphony.xwork2.ActionSupport;
  *
  * @author viquy
  */
-public class AddProductToCart extends ActionSupport {
-    private int newProductId;
+public class removeProductCart extends ActionSupport {
+    
+    private int productId;
 
-    public void setNewProductId(int newProductId) {
-        this.newProductId = newProductId;
+    public int getProductId() {
+        return productId;
     }
 
-    public int getNewProductId() {
-        return newProductId;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
-    
-    
-    
-    public AddProductToCart() {
+
+    public removeProductCart() {
     }
-    
+
     public String execute() throws Exception {
         Cart cart = (Cart) ActionContext.getContext().getSession().get("cart");
-        if(cart == null){
-            cart = new Cart();
-        }
-        
-        Product p = new ProductManager().getProductById(newProductId);
-        if(p.getId() == 0){
+        Product p = new ProductManager().getProductById(productId);
+        if (cart != null) {
+            cart.removeProduct(p);
+            return SUCCESS;
+        }else{
             return ERROR;
         }
-        cart.addProduct(p);
-        ActionContext.getContext().getSession().put("cart", cart);
-        return SUCCESS;
     }
     
 }

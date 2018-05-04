@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <a href="index.jsp">Back to search Product</a>
         <table border="1">
             <h4>History Transaction</h4>
             <th>Name</th>
@@ -27,6 +28,6 @@
                     <td><s:property value="total"/>$</td>
                 </tr>
             </s:iterator>
-        </table>
+        </table> 
     </body>
 </html>

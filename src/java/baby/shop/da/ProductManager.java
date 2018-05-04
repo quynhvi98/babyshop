@@ -77,20 +77,22 @@ public class ProductManager {
         }
     }
     
-    public Product getProductByID(int id){
-        try{
+    public Product getProductById(int id) throws ClassNotFoundException {
+        Product product = null;
+        try {
             PreparedStatement statement = getSearchByIDStatement();
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 String name = rs.getString("name");
                 float price = rs.getFloat("price");
                 String description = rs.getString("description");
-                return new Product(id, name, price, description);
+                product = new Product(id, name, price, description);
             }
-        }catch(Exception ex){
-            Logger.getLogger(baby.shop.da.ProductManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+           ex.printStackTrace();
         }
-        return new Product(0, "", 0, "");
+        return product;
+
     }
 }

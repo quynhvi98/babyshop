@@ -35,4 +35,13 @@ public class Cart {
         }
         return total;
     }
+    public void removeProduct(Product p) {
+        Integer amount = cart.get(p);
+        if (amount > 1) {
+            cart.put(p, amount - 1);
+        } else {
+            cart.remove(p);
+        }
+    }
+    
 }
