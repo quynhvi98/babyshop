@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/BabyShop"/>
+<Context path="/BabyShop">
+    <Resource 
+        name="Struts2BabyShop"
+        type="javax.sql.DataSource"
+        auth="Container"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://localhost:1433;databaseName=ecommerce;instanceName=SQL2012"
+        username="sa"
+        password="123456"/>
+</Context>
