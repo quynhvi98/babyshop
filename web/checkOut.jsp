@@ -1,6 +1,6 @@
 <%-- 
-    Document   : viewCard
-    Created on : Apr 26, 2018, 10:28:56 PM
+    Document   : insert
+    Created on : May 3, 2018, 4:35:02 PM
     Author     : viquy
 --%>
 
@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Cart Details</h1>
+        <h1>Check out</h1>
         <table border="1">
             <tr>
                 <th>Product</th>
@@ -23,17 +23,10 @@
                 <tr>
                     <td><s:property value="key.name"/></td>
                     <td><s:property value="value"/></td>
-                    <td><a href="removeProductCart?productId=<s:property value="key.id"/>">remove</a></td>
                 </tr>
             </s:iterator>
         </table>
         <label>Total:</label><s:property value="total"/><br/>
-        <form action="checkOut">
-            Name :<input name="name"/><br/>
-            Phone :<input name="phone"/><br/>
-            Address: <input name="address"/><br/>
-            <input type="submit" value="ok"/>
-        </form>
         <a href="index.jsp">Continue buying</a>
     </body>
 </html>

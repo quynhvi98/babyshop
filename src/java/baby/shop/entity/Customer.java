@@ -10,33 +10,35 @@ package baby.shop.entity;
  * @author viquy
  */
 public class Customer {
-    private int customerId;
-    private String customerName;
-    private String phone;
+    private int id;
+    private String name;
     private String address;
+    private String phone;
+    private float total;
 
-    public int getCustomerId() {
-        return customerId;
+    public float getTotal() {
+        return total;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setTotal(float total) {
+        this.total = total;
+    }
+    
+    
+    public int getId() {
+        return id;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public String getName() {
+        return name;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
@@ -47,11 +49,20 @@ public class Customer {
         this.address = address;
     }
 
-    public Customer(int customerId, String customerName, String phone, String address) {
-        this.customerId = customerId;
-        this.customerName = customerName;
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Customer(int id, String name, String address, String phone, float total) {
+        this.id = id;
+        this.name = name;
         this.address = address;
+        this.phone = phone;
+        this.total = total;
     }
     
 }
