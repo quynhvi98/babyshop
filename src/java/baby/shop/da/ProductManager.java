@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.naming.NamingException;
 
 /**
  *
@@ -24,21 +25,21 @@ public class ProductManager {
     private static PreparedStatement searchByIdStatement;
     private static PreparedStatement getProduct;
     
-    private PreparedStatement getSearchByNameStatement() throws ClassNotFoundException, SQLException{
+    private PreparedStatement getSearchByNameStatement() throws ClassNotFoundException, SQLException, NamingException{
         if(searchByNameStatement == null){
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.makeConnection();
             searchByNameStatement = connection.prepareStatement("select id,name,price,description from product where name like ?");
         }
         return searchByNameStatement;
     }
-    private PreparedStatement getProduct() throws ClassNotFoundException, SQLException{
-        Connection connection = DBConnection.getConnection();
+    private PreparedStatement getProduct() throws ClassNotFoundException, SQLException, NamingException{
+        Connection connection = DBConnection.makeConnection();
         getProduct = connection.prepareStatement("select id,name,price,description from product");
         return getProduct;
     }
-    private PreparedStatement getSearchByIDStatement() throws ClassNotFoundException, SQLException{
+    private PreparedStatement getSearchByIDStatement() throws ClassNotFoundException, SQLException, NamingException{
         if(searchByIdStatement == null){
-            Connection connection = DBConnection.getConnection();
+            Connection connection = DBConnection.makeConnection();
             searchByIdStatement = connection.prepareStatement("select name, price, description from product where id=?");
         }
         return searchByIdStatement;
@@ -77,7 +78,7 @@ public class ProductManager {
         }
     }
     
-    public Product getProductById(int id) throws ClassNotFoundException {
+    public Product getProductById(int id) throws ClassNotFoundException, NamingException {
         Product product = null;
         try {
             PreparedStatement statement = getSearchByIDStatement();
